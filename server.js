@@ -47,12 +47,6 @@ var myIceServers = [{
         "url": "stun:stun.sipgate.net:10000"
     },
     {
-        "url": "stun.mgn.ru:3478"
-    },
-    {
-        "url": "stun.tagan.ru:3478"
-    },
-    {
         "url": "turn:134.209.84.230:3487",
         "username": "g2g",
         "credential": "sanyavporyadke"
