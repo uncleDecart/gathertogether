@@ -677,6 +677,11 @@ function appInit() {
 
 
   easyrtc.setRoomOccupantListener(callEverybodyElse);
+  if (!easyrtc.getConnectionCount()) {
+    var roomName = window.location.href.split(window.location.origin)[1].replace('/', '')
+    console.log('Joining Room:', roomName);
+    easyrtc.joinRoom(roomName);
+  }
   easyrtc.easyApp("easyrtc.multiparty", "box0", ["box1", "box2", "box3"], loginSuccess);
   easyrtc.setPeerListener(messageListener);
   easyrtc.setDisconnectListener(function () {

@@ -20,6 +20,11 @@ app.use(serveStatic('static', {
     'index': ['index.html']
 }));
 
+app.get('/:room', (req, res, next) => {
+    res.type('html');
+    res.sendFile(__dirname + '/static/room.html');
+});
+
 // Start Express http server on port 8080
 var webServer = http.createServer(app);
 
@@ -67,5 +72,5 @@ var rtc = easyrtc.listen(app, socketServer, null, function (err, rtcRef) {
 
 // Listen on port 8080
 webServer.listen(8080, function () {
-    console.log('Listening on http://localhost:8080');
+    console.log('listening on http://localhost:8080');
 });

@@ -10,6 +10,11 @@ var easyrtc = require("easyrtc"); // EasyRTC internal module
 var httpApp = express();
 httpApp.use(express.static(__dirname + "/static/"));
 
+httpApp.get('/:room', (req, res, next) => {
+    res.type('html');
+    res.sendFile(__dirname + '/static/room.html');
+});
+
 // Start Express https server on port 8443
 var webServer = https.createServer({
     key: fs.readFileSync(__dirname + "/certs/localhost.key"),
