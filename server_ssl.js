@@ -30,6 +30,6 @@ var socketServer = io.listen(webServer, {
 var rtc = easyrtc.listen(httpApp, socketServer);
 
 // Listen on port 8443
-webServer.listen(8443, function () {
+webServer.listen(3333, function () {
     console.log('listening on https://localhost:8443');
 });
