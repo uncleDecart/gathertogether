@@ -38,7 +38,7 @@ var socketServer = socketIo.listen(webServer, {
 
 // Stun and Turn Servers definition
 var myIceServers = [{
-        "url": "stun1.l.google.com:19302"
+        "url": "stun.mgn.ru:3478"
     },
     {
         "url": "stun.tagan.ru:3478"
