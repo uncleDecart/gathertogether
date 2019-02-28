@@ -38,6 +38,15 @@ var socketServer = socketIo.listen(webServer, {
 
 // Stun and Turn Servers definition
 var myIceServers = [{
+        "url": "stun:stun.sipgate.net"
+    },
+    {
+        "url": "stun:217.10.68.152"
+    },
+    {
+        "url": "stun:stun.sipgate.net:10000"
+    },
+    {
         "url": "stun.mgn.ru:3478"
     },
     {
