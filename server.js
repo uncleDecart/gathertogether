@@ -4,12 +4,6 @@ var https = require('https');
 var express = require("express"); // web framework external module
 var serveStatic = require('serve-static'); // serve static files
 var socketIo = require("socket.io"); // web socket external module
-
-// This sample is using the easyrtc from parent folder.
-// To use this server_example folder only without parent folder:
-// 1. you need to replace this "require("../");" by "require("easyrtc");"
-// 2. install easyrtc (npm i easyrtc --save) in server_example/package.json
-
 var easyrtc = require("easyrtc"); // EasyRTC internal module
 
 // Set process name
@@ -20,6 +14,7 @@ var app = express();
 app.use(serveStatic('static', {
     'index': ['index.html']
 }));
+
 app.use(serveStatic('public', {
     'index': ['index.html']
 }));
@@ -40,6 +35,22 @@ var webServer = http.createServer(app).listen(port, function () {
 var socketServer = socketIo.listen(webServer, {
     "log level": 1
 });
+
+// Stun and Turn Servers definition
+var myIceServers = [{
+        "url": "stun1.l.google.com:19302"
+    },
+    {
+        "url": "stun.tagan.ru:3478"
+    },
+    {
+        "url": "turn:134.209.84.230:3487",
+        "username": "g2g",
+        "credential": "sanyavporyadke"
+    }
+];
+
+easyrtc.setOption("appIceServers", myIceServers);
 
 easyrtc.setOption("logLevel", "debug");
 
@@ -77,8 +88,3 @@ var rtc = easyrtc.listen(app, socketServer, null, function (err, rtcRef) {
         appObj.events.defaultListeners.roomCreate(appObj, creatorConnectionObj, roomName, roomOptions, callback);
     });
 });
-
-// Listen on port 8080
-// webServer.listen(port, function () {
-//     console.log('listening on ' + port);
-// });
