@@ -48,8 +48,8 @@ var myIceServers = [{
     },
     {
         "url": "turn:134.209.84.230:3487",
-        "username": "g2g",
-        "credential": "sanyavporyadke"
+        "username": "test",
+        "credential": "test"
     }
 ];
 
