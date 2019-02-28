@@ -1,1 +1,1 @@
-web: node server_ssl
+web: bash ./run.sh
