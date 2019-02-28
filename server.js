@@ -47,7 +47,7 @@ var myIceServers = [{
         "url": "stun:stun.sipgate.net:10000"
     },
     {
-        "url": "turn:134.209.84.230:3487",
+        "url": "134.209.84.230:3487",
         "username": "test",
         "credential": "test"
     }
