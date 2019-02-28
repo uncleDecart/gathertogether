@@ -1,1 +1,1 @@
-node server_ssl
+web: node server_ssl
