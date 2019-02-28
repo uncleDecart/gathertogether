@@ -8,6 +8,9 @@ var easyrtc = require("easyrtc"); // EasyRTC internal module
 
 // Setup and configure Express http server. Expect a subfolder called "static" to be the web root.
 var httpApp = express();
+const PORT = process.env.PORT || 8443,
+    LOCAL = '0.0.0.0';
+
 httpApp.use(express.static(__dirname + "/static/"));
 
 httpApp.get('/:room', (req, res, next) => {
@@ -30,6 +33,6 @@ var socketServer = io.listen(webServer, {
 var rtc = easyrtc.listen(httpApp, socketServer);
 
 // Listen on port 8443
-webServer.listen(8443, function () {
-    console.log('listening on https://localhost:8443');
+webServer.listen(PORT, LOCAL, function () {
+    console.log(`listening on ${PORT}`);
 });
