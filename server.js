@@ -1,5 +1,6 @@
 // Load required modules
 var http = require("http"); // http server core module
+var https = require('https');
 var express = require("express"); // web framework external module
 var serveStatic = require('serve-static'); // serve static files
 var socketIo = require("socket.io"); // web socket external module
@@ -19,6 +20,11 @@ var app = express();
 app.use(serveStatic('static', {
     'index': ['index.html']
 }));
+app.use(serveStatic('public', {
+    'index': ['index.html']
+}));
+
+var port = process.env.PORT || 8080;
 
 app.get('/:room', (req, res, next) => {
     res.type('html');
@@ -26,7 +32,9 @@ app.get('/:room', (req, res, next) => {
 });
 
 // Start Express http server on port 8080
-var webServer = http.createServer(app);
+var webServer = http.createServer(app).listen(port, function () {
+    console.log('listening on ' + port);
+});;
 
 // Start Socket.io so it attaches itself to Express server
 var socketServer = socketIo.listen(webServer, {
@@ -71,6 +79,6 @@ var rtc = easyrtc.listen(app, socketServer, null, function (err, rtcRef) {
 });
 
 // Listen on port 8080
-webServer.listen(8080, function () {
-    console.log('listening on http://localhost:8080');
-});
+// webServer.listen(port, function () {
+//     console.log('listening on ' + port);
+// });
