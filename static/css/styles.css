@@ -28,7 +28,16 @@
     background-color: #ff8000;
 }
 
+#fullpage {
+    background: #5C258D;
+    background: -webkit-linear-gradient(to right, #4389A2, #5C258D);
+    background: linear-gradient(to right, #4389A2, #5C258D);
+}
+
 body {
+    background: #5C258D;
+    background: -webkit-linear-gradient(to right, #4389A2, #5C258D);
+    background: linear-gradient(to right, #4389A2, #5C258D);
     margin-left: 0;
     margin-top: 0;
 }
@@ -50,24 +59,14 @@ body {
 }
 
 #textentryBox {
-    border: 2px solid #a0ffa0;
     border-radius: 10px;
     z-index: 5;
     position: absolute;
     background-color: #ffffff;
     box-shadow: 5px 5px 5px #000000;
-    font-family: 'Courier New', Courier, monospace;
 }
 
 #textentryField {
     font-size: x-large;
     margin: 20px;
-}
-
-#textentrySubmit {
-    font-size: larger;
-}
-
-#textentryCancel {
-    font-size: larger;
 }

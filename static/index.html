@@ -5,13 +5,72 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+    crossorigin="anonymous">
+  <title>Gather2gather</title>
+  <style>body {
+      background: #5C258D;  /* fallback for old browsers */
+      background: -webkit-linear-gradient(to right, #4389A2, #5C258D);
+      background: linear-gradient(to right, #4389A2, #5C258D);
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    
+    #input {
+      margin: 50px auto;
+      max-width: 600px;
+    }
+    .alert {
+      margin: 0 auto;
+      max-width: 600px;
+    display: none;
+}</style>
 </head>
 
 <body>
-  <h1>Join or create room with name:</h1>
-  <input id="text" type="text">
-  <input type="button" value="Go!" onclick="window.location.href += document.querySelector('#text').value;">
+  <div class="container text-center">
+    <h1 class="text-white mb-5">Welcome to gather2gather!</h1>
+    <h3 class="text-white">Join or create room:</h3>
+
+
+    <div id="input" class="input-group mb-3">
+      <input id="text" type="text" class="form-control" placeholder="Roomname" aria-describedby="button-addon2">
+      <div class="input-group-append">
+        <button class="btn btn-outline-light" type="button" id="button-addon2" onclick="redirectToRoom()">Go!</button>
+      </div>
+    </div>
+
+    <div class="alert alert-danger alert-dismissible" role="alert" id="buttonAlert">
+      You must input a room name!
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    function redirectToRoom() {
+      console.log(document.querySelector('#text').value);
+      if (document.querySelector('#text').value) {
+        window.location.href += document.querySelector('#text').value;
+      } else {
+        $(".alert").hide().show('medium');
+        setTimeout(() => {
+          $(".alert").fadeOut();
+        }, 5000);
+      }
+    }
+  </script>
+  <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
 </body>
 
 </html>
